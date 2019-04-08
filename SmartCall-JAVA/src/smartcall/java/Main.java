@@ -22,6 +22,7 @@ public class Main extends Application {
     public void start(Stage stage) throws IOException {
         
         Parent root = FXMLLoader.load(getClass().getResource("w_MainWindow.fxml"));              
+                
         
         stage.setTitle("SmartCall");
         stage.setMaximized(true);
