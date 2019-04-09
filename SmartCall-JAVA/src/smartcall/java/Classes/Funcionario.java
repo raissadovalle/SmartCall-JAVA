@@ -1,6 +1,6 @@
 package smartcall.java.Classes;
 
-public class Funcionario {
+public class Funcionario extends Entidade{
 
     private String cargo;
     private String usuario;
