@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package smartcall.java.Controller;
+package smartcall.java;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -14,6 +14,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 import smartcall.java.Classes.Chamado;
+import smartcall.java.Database.ChamadoDB;
 
 public class W_CadastroChamadoController implements Initializable {
 
@@ -23,12 +24,9 @@ public class W_CadastroChamadoController implements Initializable {
     public W_CadastroChamadoController(Chamado chamado){
         
         this.chamado = chamado;
-        
     }
     
-        public W_CadastroChamadoController(){
-        
-        
+        public W_CadastroChamadoController(){  
     }
             
     public void SairTela(MouseEvent event){
@@ -36,6 +34,15 @@ public class W_CadastroChamadoController implements Initializable {
         tela.hide();
     }
         
+    public void SalvarDados(MouseEvent event){
+        
+        Window tela = ((Node)(event.getSource())).getScene().getWindow();
+        
+        ChamadoDB chDB = new ChamadoDB();
+        chDB.SalvarChamado(chamado);
+        tela.hide();
+        
+    }
         
     @Override
     public void initialize(URL url, ResourceBundle rb) {

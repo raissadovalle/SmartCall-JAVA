@@ -16,4 +16,8 @@ public class ChamadoDB {
 
         return Dados;
     }    
+
+    public void SalvarChamado(Chamado chamado) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

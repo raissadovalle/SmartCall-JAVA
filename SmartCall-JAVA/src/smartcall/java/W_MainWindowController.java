@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package smartcall.java.Controller;
+package smartcall.java;
 
 import java.io.IOException;
 import java.net.URL;
@@ -52,7 +52,7 @@ public class W_MainWindowController implements Initializable {
     public void carregarTelaCliente() throws IOException{
         
         panelPrincipal = new AnchorPane();
-        StackPane pane = FXMLLoader.load(getClass().getResource("u_Cliente"));
+        StackPane pane = FXMLLoader.load(getClass().getResource("u_Cliente.fxml"));
         pane.setAlignment(Pos.CENTER);
         panelPrincipal.getChildren().setAll(pane);
         

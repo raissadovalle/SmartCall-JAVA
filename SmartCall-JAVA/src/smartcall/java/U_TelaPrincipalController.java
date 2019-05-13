@@ -3,9 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package smartcall.java.Controller;
+package smartcall.java;
 
-import smartcall.java.Controller.W_CadastroChamadoController;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
