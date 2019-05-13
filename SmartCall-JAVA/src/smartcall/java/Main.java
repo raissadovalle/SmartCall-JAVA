@@ -13,22 +13,19 @@ import javafx.scene.layout.Region;
 import javafx.stage.Stage;
 
 public class Main extends Application {
-    
+        
     public static void main(String[] args) {
         launch(args);
     }
     
     @Override
-    public void start(Stage stage) throws IOException {
+    public void start(Stage primaryStage) throws IOException {
         
         Parent root = FXMLLoader.load(getClass().getResource("w_MainWindow.fxml"));              
                 
+        primaryStage.setTitle("SmartCall");
+        primaryStage.setScene(new Scene(root));
+        primaryStage.show();
         
-        stage.setTitle("SmartCall");
-        stage.setMaximized(true);
-        stage.setScene(new Scene(root));
-        stage.show();
-        
-    } 
-
+    }   
 }

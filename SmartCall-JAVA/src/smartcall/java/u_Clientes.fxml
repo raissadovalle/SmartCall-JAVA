@@ -20,7 +20,7 @@
          <left>
             <StackPane prefWidth="250.0" BorderPane.alignment="CENTER">
                <children>
-                  <TitledPane alignment="CENTER" animated="false" text="Chamados Recentes" textAlignment="CENTER" textFill="#fc0000" textOverrun="CLIP" StackPane.alignment="TOP_CENTER">
+                  <TitledPane alignment="CENTER" animated="false" text="Clientes Recentes" textAlignment="CENTER" textFill="#fc0000" textOverrun="CLIP" StackPane.alignment="TOP_CENTER">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
@@ -34,7 +34,7 @@
          <right>
             <StackPane prefWidth="250.0" BorderPane.alignment="CENTER">
                <children>
-                  <TitledPane animated="false" text="Chamados Atrasados" textFill="RED" StackPane.alignment="TOP_LEFT">
+                  <TitledPane animated="false" text="Maior numero de chamado" textFill="RED" StackPane.alignment="TOP_LEFT">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
