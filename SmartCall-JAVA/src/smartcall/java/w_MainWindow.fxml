@@ -28,9 +28,9 @@
         <menus>
           <Menu mnemonicParsing="false" text="Gerenciar">
             <items>
-              <MenuItem mnemonicParsing="false" text="Clientes" />
-                  <MenuItem mnemonicParsing="false" text="Funcionários" />
-                  <MenuItem fx:id="menuChamado" mnemonicParsing="false" text="Chamados" />
+              <MenuItem mnemonicParsing="false" onAction="#carregarTelaCliente" text="Clientes" />
+                  <MenuItem mnemonicParsing="false" onAction="#carregarTelaFuncionario" text="Funcionários" />
+                  <MenuItem fx:id="menuChamado" mnemonicParsing="false" onAction="#carregarTelaPrincipal" text="Chamados" />
             </items>
           </Menu>
         </menus>

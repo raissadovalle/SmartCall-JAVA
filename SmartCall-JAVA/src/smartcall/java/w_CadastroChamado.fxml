@@ -9,19 +9,23 @@
 
 <AnchorPane id="AnchorPane" prefHeight="708.0" prefWidth="1408.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="smartcall.java.W_CadastroChamadoController">
    <children>
-      <TextArea layoutX="191.0" layoutY="112.0" prefHeight="373.0" prefWidth="1017.0" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="191.0" AnchorPane.rightAnchor="200.0" />
+      <TextArea layoutX="186.0" layoutY="112.0" prefHeight="285.0" prefWidth="1022.0" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="186.0" AnchorPane.rightAnchor="200.0" />
       <Button alignment="CENTER" layoutX="522.0" layoutY="620.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" text="Salvar" textAlignment="CENTER" AnchorPane.bottomAnchor="38.0" />
       <Button fx:id="sairTela" contentDisplay="CENTER" layoutX="738.0" layoutY="620.0" mnemonicParsing="false" onMouseClicked="#SairTela" prefHeight="50.0" prefWidth="150.0" text="Cancelar" AnchorPane.bottomAnchor="38.0" AnchorPane.leftAnchor="738.0" AnchorPane.rightAnchor="520.0" />
       <Label layoutX="190.0" layoutY="89.0" text="Cliente" />
       <TextField layoutX="190.0" layoutY="106.0" maxWidth="-Infinity" prefWidth="400.0" />
-      <Label layoutX="190.0" layoutY="213.0" text="Descrição" />
-      <Button layoutX="190.0" layoutY="140.0" maxWidth="-Infinity" mnemonicParsing="false" prefWidth="150.0" text="Adicionar Imagem" textAlignment="CENTER" />
+      <Label layoutX="186.0" layoutY="300.0" text="Descrição" />
       <Button layoutX="597.0" layoutY="106.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="52.0" text="Pesquisa" />
-      <ComboBox layoutX="190.0" layoutY="175.0" prefWidth="150.0" promptText="Definir Setor" visibleRowCount="4" />
+      <ComboBox layoutX="191.0" layoutY="198.0" prefWidth="150.0" promptText="Definir Setor" visibleRowCount="4" />
       <Label alignment="CENTER" layoutX="6.0" layoutY="14.0" prefHeight="53.0" prefWidth="1397.0" text="Cadastro de chamados" textAlignment="CENTER" textFill="RED">
          <font>
             <Font name="System Bold" size="36.0" />
          </font>
       </Label>
+      <Button layoutX="598.0" layoutY="155.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="52.0" text="Pesquisa" />
+      <TextField layoutX="191.0" layoutY="155.0" maxWidth="-Infinity" prefWidth="400.0" />
+      <Label layoutX="191.0" layoutY="138.0" text="Funcionário" />
+      <Label layoutX="190.0" layoutY="239.0" text="Assunto" />
+      <TextField layoutX="190.0" layoutY="256.0" maxWidth="-Infinity" prefHeight="25.0" prefWidth="400.0" />
    </children>
 </AnchorPane>
