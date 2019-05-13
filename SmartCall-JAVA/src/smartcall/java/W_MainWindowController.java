@@ -62,7 +62,6 @@ public class W_MainWindowController implements Initializable {
 
         StackPane pane = FXMLLoader.load(getClass().getResource("u_Funcionario.fxml"));
         pane.setAlignment(Pos.CENTER);
-        panelPrincipal.getChildren().setAll(pane);
-        
+        panelPrincipal.getChildren().setAll(pane);   
     }
 }
