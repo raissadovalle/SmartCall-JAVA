@@ -43,7 +43,7 @@ public class W_MainWindowController implements Initializable {
     @FXML
     public void carregarTelaPrincipal() throws IOException{
 
-        StackPane pane = FXMLLoader.load(getClass().getResource("u_Chamado.fxml"));
+        StackPane pane = FXMLLoader.load(getClass().getResource("u_TelaPrincipal.fxml"));
         pane.setAlignment(Pos.CENTER);
         panelPrincipal.getChildren().setAll(pane);        
     } 

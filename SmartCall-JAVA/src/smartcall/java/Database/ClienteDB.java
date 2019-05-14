@@ -5,23 +5,23 @@
  */
 package smartcall.java.Database;
 
-import smartcall.java.Classes.Chamado;
+import smartcall.java.Classes.PessoaFisica;
 
 
-public class ChamadoDB {
+public class ClienteDB {
 
-    public Chamado BuscarChamado() {
+    public PessoaFisica BuscarCliente() {
         
-        Chamado Dados = new Chamado();
+        PessoaFisica Dados = new PessoaFisica();
 
         return Dados;
     }    
 
-    public void SalvarChamado(Chamado chamado) {
+    public void SalvarCliente(PessoaFisica chamado) {
         
     }
 
-    public boolean ExcluirChamado() {
+    public boolean ExcluirCliente() {
         return true;
     }
 }

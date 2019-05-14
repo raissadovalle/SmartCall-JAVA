@@ -8,7 +8,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<StackPane alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="705.0" prefWidth="1408.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="smartcall.java.U_TelaPrincipalController">
+<StackPane alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="705.0" prefWidth="1408.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="smartcall.java.U_FuncionarioController">
    <children>
       <BorderPane minHeight="0.0" minWidth="0.0">
          <bottom>
@@ -34,22 +34,22 @@
          <top>
             <StackPane prefHeight="100.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button fx:id="btnVisualizar" mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" text="Visualizar" StackPane.alignment="CENTER_RIGHT">
+                  <Button fx:id="btnVisualizar" mnemonicParsing="false" onMouseClicked="#VisualizarFuncionario" prefHeight="50.0" prefWidth="150.0" text="Visualizar" StackPane.alignment="CENTER_RIGHT">
                      <StackPane.margin>
                         <Insets right="250.0" />
                      </StackPane.margin>
                   </Button>
-                  <Button fx:id="btnRemover" mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" text="Remover" StackPane.alignment="CENTER_RIGHT">
+                  <Button fx:id="btnRemover" mnemonicParsing="false" onMouseClicked="#ExcluirFuncionario" prefHeight="50.0" prefWidth="150.0" text="Remover" StackPane.alignment="CENTER_RIGHT">
                      <StackPane.margin>
                         <Insets right="500.0" />
                      </StackPane.margin>
                   </Button>
-                  <Button fx:id="btnEditar" mnemonicParsing="false" onMouseClicked="#VisualizarChamado" prefHeight="50.0" prefWidth="150.0" text="Editar" StackPane.alignment="CENTER_LEFT">
+                  <Button fx:id="btnEditar" mnemonicParsing="false" onMouseClicked="#VisualizarFuncionario" prefHeight="50.0" prefWidth="150.0" text="Editar" StackPane.alignment="CENTER_LEFT">
                      <StackPane.margin>
                         <Insets left="500.0" />
                      </StackPane.margin>
                   </Button>
-                  <Button fx:id="btnAdicionar" mnemonicParsing="false" onMouseClicked="#AdicionarChamado" prefHeight="50.0" prefWidth="150.0" text="Adicionar" StackPane.alignment="CENTER_LEFT">
+                  <Button fx:id="btnAdicionar" mnemonicParsing="false" onMouseClicked="#AdicionarFuncionario" prefHeight="50.0" prefWidth="150.0" text="Adicionar" StackPane.alignment="CENTER_LEFT">
                      <StackPane.margin>
                         <Insets left="250.0" />
                      </StackPane.margin>
