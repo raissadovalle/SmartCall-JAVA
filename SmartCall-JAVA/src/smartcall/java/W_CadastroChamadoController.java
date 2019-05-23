@@ -7,6 +7,7 @@ package smartcall.java;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
@@ -26,12 +27,16 @@ public class W_CadastroChamadoController implements Initializable {
         this.chamado = chamado;
     }
     
-        public W_CadastroChamadoController(){  
+    public W_CadastroChamadoController(){  
+        
+        
     }
             
     public void SairTela(MouseEvent event){
-        Window tela = ((Node)(event.getSource())).getScene().getWindow();
-        tela.hide();
+        
+       Stage stage = (Stage) sairTela.getScene().getWindow();
+       stage.close();
+       
     }
         
     public void SalvarDados(MouseEvent event){

@@ -17,7 +17,7 @@
       <Label layoutX="186.0" layoutY="300.0" text="Descrição" />
       <Button layoutX="597.0" layoutY="106.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="52.0" text="Pesquisa" />
       <ComboBox layoutX="191.0" layoutY="198.0" prefWidth="150.0" promptText="Definir Setor" visibleRowCount="4" />
-      <Label alignment="CENTER" layoutX="6.0" layoutY="14.0" prefHeight="53.0" prefWidth="1397.0" style="-fx-border-color: 990000;" text="Cadastro de chamados" textAlignment="CENTER" textFill="RED">
+      <Label alignment="CENTER" layoutX="6.0" layoutY="14.0" prefHeight="53.0" prefWidth="1397.0" text="Cadastro de chamados" textAlignment="CENTER" textFill="RED">
          <font>
             <Font name="System Bold" size="36.0" />
          </font>
