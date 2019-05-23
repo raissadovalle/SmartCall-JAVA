@@ -11,6 +11,7 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -18,7 +19,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import smartcall.java.Database.FuncionarioDB;
 
 /**
@@ -38,53 +41,40 @@ public class U_FuncionarioController implements Initializable {
     private Button btnAdicionar;
     @FXML
     private ListView<?> chamadoScene;
-
-    /**
-     * Initializes the controller class.
-     */
+    @FXML
+    private HBox panelBotoesFunc;
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
     
-        @FXML
-        private void AdicionarFuncionario(MouseEvent event) throws IOException {
+        panelBotoesFunc.setSpacing(50);
+        panelBotoesFunc.setAlignment(Pos.CENTER);
+    }
+    
+    @FXML
+    private void AdicionarFuncionario(MouseEvent event) throws IOException {
 
         Stage stage = new Stage();
         Parent root = FXMLLoader.load(getClass().getResource("w_CadastroFuncionario.fxml"));
 
         stage.setTitle("Cadastro de Funcionarios");
         stage.setScene(new Scene(root));
+        stage.initStyle(StageStyle.UNDECORATED);
         stage.show();
-
+        
     }
 
     @FXML
     private void VisualizarFuncionario(MouseEvent event) throws IOException {
-
-//        Funcionario Dados = new Funcionario();;
-//        FuncionarioDB chDB = new FuncionarioDB();
-//        Stage stage = new Stage();
-//        FXMLLoader loader = new FXMLLoader();
-//
-//        Dados = chDB.BuscarFuncionario();
-//        
+      
         Stage stage = new Stage();
         Parent root = FXMLLoader.load(getClass().getResource("w_CadastroFuncionario.fxml"));
 
         stage.setTitle("Editar Funcionario");
         stage.setScene(new Scene(root));
+        stage.initStyle(StageStyle.UNDECORATED);
         stage.show();
-
-//        if (Dados != null) {
-//            loader = FXMLLoader.load(getClass().getResource("w_CadastroFuncionario.fxml"));
-//            loader.setController(new W_CadastroFuncionarioController(Dados));
-//            Parent root = loader.load();
-//
-//            stage.setTitle("Cadastro de Funcionarios");
-//            stage.setScene(new Scene(root));
-//            stage.show();
-//        }
+        
     }
 
     @FXML
@@ -95,8 +85,10 @@ public class U_FuncionarioController implements Initializable {
 
         stage.setTitle("Cadastro de Funcionarios");
         stage.setScene(new Scene(root));
+        stage.initStyle(StageStyle.UNDECORATED);
         stage.show();
     }
+    
     @FXML
     public void ExcluirFuncionario() {
 
@@ -125,14 +117,5 @@ public class U_FuncionarioController implements Initializable {
             });
 
         }
-    }
-
-//    @FXML
-//    private void VisualizarChamado(MouseEvent event) {
-//    }
-//
-//    @FXML
-//    private void AdicionarChamado(MouseEvent event) {
-//    }
-    
+    }    
 }

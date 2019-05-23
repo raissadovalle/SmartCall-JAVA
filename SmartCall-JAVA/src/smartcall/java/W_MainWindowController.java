@@ -24,16 +24,15 @@ import javafx.stage.Stage;
 public class W_MainWindowController implements Initializable {
 
     @FXML
-    private AnchorPane panelPrincipal;    
+    private AnchorPane panelPrincipal;
     private MenuItem menuChamado;
     private MenuItem menuFuncionario;
     private MenuItem menuCliente;
-    
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        try {     
+        try {
             carregarTelaPrincipal();
         } catch (IOException ex) {
             Logger.getLogger(W_MainWindowController.class.getName()).log(Level.SEVERE, null, ex);
@@ -41,27 +40,47 @@ public class W_MainWindowController implements Initializable {
     }
 
     @FXML
-    public void carregarTelaPrincipal() throws IOException{
+    public void carregarTelaPrincipal() throws IOException {
 
         StackPane pane = FXMLLoader.load(getClass().getResource("u_TelaPrincipal.fxml"));
         pane.setAlignment(Pos.CENTER);
-        panelPrincipal.getChildren().setAll(pane);        
-    } 
-    
-    @FXML
-    public void carregarTelaCliente() throws IOException{
-                
-        StackPane pane = FXMLLoader.load(getClass().getResource("u_Cliente.fxml"));
-        pane.setAlignment(Pos.CENTER);
+
         panelPrincipal.getChildren().setAll(pane);
+       
+        panelPrincipal.setLeftAnchor(pane, 0.0d);
+        panelPrincipal.setTopAnchor(pane, 0.0d);
+        panelPrincipal.setRightAnchor(pane, 0.0d);
+        panelPrincipal.setBottomAnchor(pane, 0.0d);
+        
+        panelPrincipal.getChildren().setAll(pane);       
+
     }
-    
 
     @FXML
-    public void carregarTelaFuncionario() throws IOException{
+    public void carregarTelaCliente() throws IOException {
+
+        StackPane pane = FXMLLoader.load(getClass().getResource("u_Cliente.fxml"));
+        pane.setAlignment(Pos.CENTER);
+        
+        panelPrincipal.setLeftAnchor(pane, 0.0d);
+        panelPrincipal.setTopAnchor(pane, 0.0d);
+        panelPrincipal.setRightAnchor(pane, 0.0d);
+        panelPrincipal.setBottomAnchor(pane, 0.0d);
+        
+        panelPrincipal.getChildren().setAll(pane);
+    }
+
+    @FXML
+    public void carregarTelaFuncionario() throws IOException {
 
         StackPane pane = FXMLLoader.load(getClass().getResource("u_Funcionario.fxml"));
         pane.setAlignment(Pos.CENTER);
-        panelPrincipal.getChildren().setAll(pane);   
+        
+        panelPrincipal.setLeftAnchor(pane, 0.0d);
+        panelPrincipal.setTopAnchor(pane, 0.0d);
+        panelPrincipal.setRightAnchor(pane, 0.0d);
+        panelPrincipal.setBottomAnchor(pane, 0.0d);
+        
+        panelPrincipal.getChildren().setAll(pane);
     }
 }

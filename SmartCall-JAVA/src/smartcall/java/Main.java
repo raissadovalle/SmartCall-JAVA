@@ -21,10 +21,10 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
         
-        Parent root = FXMLLoader.load(getClass().getResource("w_MainWindow.fxml"));              
-                
+        Parent root = FXMLLoader.load(getClass().getResource("w_MainWindow.fxml"));                    
         primaryStage.setTitle("SmartCall");
         primaryStage.setScene(new Scene(root));
+        primaryStage.setMaximized(true);
         primaryStage.show();
         
     }   

@@ -11,6 +11,7 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -20,6 +21,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 import smartcall.java.Classes.Chamado;
@@ -43,12 +46,17 @@ public class U_TelaPrincipalController implements Initializable {
     private Button btnRemover;
     @FXML
     private ListView<?> chamadoScene;
-
+    @FXML
+    private HBox panelBotoes;   
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
+        panelBotoes.setSpacing(50);
+        panelBotoes.setAlignment(Pos.CENTER);
+           
     }
-    
+
     @FXML
     private void AdicionarChamado(MouseEvent event) throws IOException {
 
@@ -64,13 +72,6 @@ public class U_TelaPrincipalController implements Initializable {
     @FXML
     private void VisualizarChamado(MouseEvent event) throws IOException {
 
-//        Chamado Dados = new Chamado();;
-//        ChamadoDB chDB = new ChamadoDB();
-//        Stage stage = new Stage();
-//        FXMLLoader loader = new FXMLLoader();
-//
-//        Dados = chDB.BuscarChamado();
-//        
         Stage stage = new Stage();
         Parent root = FXMLLoader.load(getClass().getResource("w_CadastroChamado.fxml"));
 
@@ -78,19 +79,10 @@ public class U_TelaPrincipalController implements Initializable {
         stage.setScene(new Scene(root));
         stage.show();
 
-//        if (Dados != null) {
-//            loader = FXMLLoader.load(getClass().getResource("w_CadastroChamado.fxml"));
-//            loader.setController(new W_CadastroChamadoController(Dados));
-//            Parent root = loader.load();
-//
-//            stage.setTitle("Cadastro de chamados");
-//            stage.setScene(new Scene(root));
-//            stage.show();
-//        }
     }
 
     public void DetalharChamado(MouseEvent event) throws IOException {
-        
+
         Stage stage = new Stage();
         Parent root = FXMLLoader.load(getClass().getResource("w_CadastroChamado.fxml"));
 
