@@ -5,21 +5,25 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class c_ConexaoDB {
-    
-    public Connection ConexaoAvulsa(){
-        String url = "jdbc:postgresql://localhost:5432/SmartCall";
-        String usuario = "postgres";
-        String senha = "123456";
 
-        try{
-            Class.forName("org.postgresql.Driver").newInstance();
-            Connection conn = DriverManager.getConnection(url, usuario, senha);
-            return conn;
-          
-        }catch(ClassNotFoundException | IllegalAccessException | InstantiationException | SQLException e){
-            System.out.println("Problemas ao tentar conectar com o banco de dados: " + e);
-            return null;
+    private static Connection connection;
+
+    private static String url = "jdbc:postgresql://localhost:5432/SmartCall";
+    private static String usuario = "postgres";
+    private static String senha = "123456";
+
+    
+    private c_ConexaoDB(){}
+    
+    public static Connection getConnection() {
+        
+        if(connection == null){
+            try{
+                connection = DriverManager.getConnection(url, usuario, senha);
+            }catch(SQLException ex){
+                System.out.println("Houve um erro ao conectar com o Banco de Dados.");
+            }
         }
+        return connection;
     }
 }
-

@@ -6,8 +6,9 @@
 package smartcall.java;
 
 import java.net.URL;
+import java.sql.Connection;
 import java.util.ResourceBundle;
-import javafx.fxml.FXMLLoader;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
@@ -16,10 +17,13 @@ import javafx.stage.Stage;
 import javafx.stage.Window;
 import smartcall.java.Classes.Chamado;
 import smartcall.java.Database.ChamadoDB;
+import smartcall.java.Database.c_ConexaoDB;
 
 public class W_CadastroChamadoController implements Initializable {
 
+    @FXML
     private Chamado chamado;
+    @FXML
     private Button sairTela;
     
     public W_CadastroChamadoController(Chamado chamado){
@@ -41,17 +45,13 @@ public class W_CadastroChamadoController implements Initializable {
         
     public void SalvarDados(MouseEvent event){
         
-        Window tela = ((Node)(event.getSource())).getScene().getWindow();
-        
-        ChamadoDB chDB = new ChamadoDB();
-        chDB.SalvarChamado(chamado);
-        tela.hide();
-        
+        Stage stage = (Stage) sairTela.getScene().getWindow();        
+        stage.close();
     }
         
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        
     }    
     
 }

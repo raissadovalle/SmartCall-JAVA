@@ -7,10 +7,10 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="708.0" prefWidth="1408.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="AnchorPane" prefHeight="708.0" prefWidth="1408.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="smartcall.java.W_CadastroFuncionarioController">
    <children>
       <Button alignment="CENTER" layoutX="522.0" layoutY="620.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" text="Salvar" textAlignment="CENTER" AnchorPane.bottomAnchor="38.0" />
-      <Button contentDisplay="CENTER" layoutX="738.0" layoutY="620.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" text="Cancelar" AnchorPane.bottomAnchor="38.0" AnchorPane.leftAnchor="738.0" AnchorPane.rightAnchor="520.0" />
+      <Button fx:id="sairTela" contentDisplay="CENTER" layoutX="738.0" layoutY="620.0" mnemonicParsing="false" onMouseClicked="#SairTela" prefHeight="50.0" prefWidth="150.0" text="Cancelar" AnchorPane.bottomAnchor="38.0" AnchorPane.leftAnchor="738.0" AnchorPane.rightAnchor="520.0" />
       <Label alignment="CENTER" layoutX="6.0" layoutY="14.0" prefHeight="53.0" prefWidth="1397.0" text="Cadastro de funcionários" textAlignment="CENTER" textFill="RED">
          <font>
             <Font name="System Bold" size="36.0" />
