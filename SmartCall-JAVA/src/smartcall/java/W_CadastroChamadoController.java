@@ -21,8 +21,8 @@ import smartcall.java.Database.c_ConexaoDB;
 
 public class W_CadastroChamadoController implements Initializable {
 
-    @FXML
     private Chamado chamado;
+
     @FXML
     private Button sairTela;
     
@@ -44,6 +44,9 @@ public class W_CadastroChamadoController implements Initializable {
     }
         
     public void SalvarDados(MouseEvent event){
+        
+        ChamadoDB chDB = new ChamadoDB();
+        chDB.SalvarChamado(chamado);
         
         Stage stage = (Stage) sairTela.getScene().getWindow();        
         stage.close();

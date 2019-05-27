@@ -11,14 +11,15 @@
    <children>
       <SplitPane dividerPositions="0.10266159695817491" layoutY="25.0" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
-          <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="1408.0">
+          <AnchorPane fx:id="panelLogo" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="1408.0">
                <children>
-                  <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="1150.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="58.0" AnchorPane.topAnchor="35.0">
+                  <ImageView fx:id="imageLogo" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="60.0">
                      <image>
                         <Image url="@Imagens/Logo.png" />
                      </image>
                   </ImageView>
-                  <Label layoutX="44.0" layoutY="41.0" text="Tempo no sistema:" AnchorPane.leftAnchor="44.0" AnchorPane.topAnchor="41.0" />
+                  <Label layoutX="44.0" layoutY="41.0" text="Tempo no sistema:" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="75.0" />
+                  <Label fx:id="lbHora" layoutX="122.0" layoutY="75.0" />
                </children>
             </AnchorPane>
           <AnchorPane fx:id="panelPrincipal" minHeight="0.0" minWidth="0.0" />
