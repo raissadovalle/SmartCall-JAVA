@@ -6,9 +6,12 @@ public class Chamado {
     private String descricao;
     private String assunto;
     private String status;
-    private String setor;
+    private String idSetor;
+    private String nomeSetor;
     private String chv_funcionario;
+    private String nomeFuncionario;
     private String chv_cliente;
+    private String nomeCliente;
     private String dataInicial;
     private String dataFinal;
     
@@ -32,9 +35,14 @@ public class Chamado {
         this.status = status;
     }
 
-    public String getSetor() {return setor;}
-    public void setSetor(String setor) { 
-        this.setor = setor;
+    public String getIdSetor() {return idSetor;}
+    public void setIdSetor(String idSetor) { 
+        this.idSetor = idSetor;
+    }
+    
+    public String getNomeSetor() {return nomeSetor;}
+    public void setNomeSetor(String nomeSetor) { 
+        this.nomeSetor = nomeSetor;
     }
 
     public String getChv_funcionario() {return chv_funcionario;}

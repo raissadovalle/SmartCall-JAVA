@@ -7,12 +7,14 @@ package smartcall.java;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -20,13 +22,13 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-import javafx.stage.Window;
 import smartcall.java.Classes.Chamado;
-import smartcall.java.Classes.Entidade;
 import smartcall.java.Database.ChamadoDB;
 
 /**
@@ -36,24 +38,60 @@ import smartcall.java.Database.ChamadoDB;
  */
 public class U_TelaPrincipalController implements Initializable {
 
-    @FXML
-    private Button btnAdicionar;
-    @FXML
-    private Button btnVisualizar;
-    @FXML
-    private Button btnEditar;
-    @FXML
-    private Button btnRemover;
+
     @FXML
     private ListView<?> chamadoScene;
+    
     @FXML
-    private HBox panelBotoes;   
+    private HBox panelBotoes;
+
+    @FXML
+    private Button btnAdicionar;
+
+    @FXML
+    private TableView<Chamado> gridChamado;
+    
+    @FXML
+    private TableColumn<Chamado, String> idChamado;
+    
+    @FXML
+    private TableColumn<Chamado, String> nomeCliente;
+
+    @FXML
+    private TableColumn<Chamado, String> nomeFuncionario;
+        
+    @FXML
+    private TableColumn<Chamado, String> assunto;
+
+    @FXML
+    private TableColumn<Chamado, String> dataIni;
+    
+        @FXML
+    private TableColumn<Chamado, String> dataFim;
+
+    @FXML
+    private TableColumn<Chamado, String> status;
+
+    @FXML
+    private Button btnVisualizar;
+
+    @FXML
+    private Button btnEditar;
+
+    @FXML
+    private Button btnRemover;
+
+    
+    private ArrayList<Chamado> listaChamados = new ArrayList();
+    
+    
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
         panelBotoes.setSpacing(50);
         panelBotoes.setAlignment(Pos.CENTER);
+        BuscarListaChamados();
            
     }
 
@@ -118,5 +156,31 @@ public class U_TelaPrincipalController implements Initializable {
             });
 
         }
+    }
+    
+    private void InitTable(){
+        idChamado.setCellValueFactory(new PropertyValueFactory("idChamado"));
+        nomeCliente.setCellValueFactory(new PropertyValueFactory("nomeCliente"));
+        nomeFuncionario.setCellValueFactory(new PropertyValueFactory("nomeFuncionario"));
+        dataIni.setCellValueFactory(new PropertyValueFactory("dataIni"));
+        dataFim.setCellValueFactory(new PropertyValueFactory("dataFim"));
+        assunto.setCellValueFactory(new PropertyValueFactory("assunto"));
+        status.setCellValueFactory(new PropertyValueFactory("status"));
+        
+        gridChamado.setItems(AtualizaTabela());
+    }
+
+    private void BuscarListaChamados() {
+        ChamadoDB chDB = new ChamadoDB();
+        
+        listaChamados = chDB.BuscarListaChamados();
+        gridChamado.getItems().addAll(listaChamados);
+     
+    }
+    
+    private ObservableList<Chamado> AtualizaTabela(){
+        Chamado chamado = new Chamado();
+        
+        return FXCollections.observableArrayList(chamado.getList());
     }
 }

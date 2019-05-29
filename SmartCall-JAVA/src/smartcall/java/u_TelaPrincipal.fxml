@@ -14,9 +14,6 @@
          <bottom>
             <StackPane prefHeight="75.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
          </bottom>
-         <center>
-            <ListView fx:id="chamadoScene" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
-         </center>
          <left>
             <StackPane prefWidth="250.0" BorderPane.alignment="CENTER">
                <children>
@@ -62,6 +59,20 @@
                </BorderPane.margin>
             </StackPane>
          </top>
+         <center>
+            <TableView fx:id="gridChamado" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+              <columns>
+                <TableColumn fx:id="idChamado" prefWidth="75.0" text="ID" />
+                <TableColumn fx:id="idAssunto" prefWidth="190.0" text="Assunto" />
+                  <TableColumn fx:id="nomeCliente" prefWidth="160.0" text="Cliente" />
+                  <TableColumn fx:id="nomeCliente" prefWidth="160.0" text="Funcionario" />
+                  <TableColumn fx:id="nomeSetor" prefWidth="75.0" text="Setor" />
+                  <TableColumn fx:id="dataIni" prefWidth="85.0" text="Data Inicial" />
+                  <TableColumn fx:id="dataFim" prefWidth="85.0" text="Data Final" />
+                  <TableColumn fx:id="status" minWidth="50.0" prefWidth="75.0" text="Status" />
+              </columns>
+            </TableView>
+         </center>
       </BorderPane>
    </children>
 </StackPane>
