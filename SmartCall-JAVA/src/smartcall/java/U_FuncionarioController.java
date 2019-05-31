@@ -5,6 +5,7 @@
  */
 package smartcall.java;
 
+import DAO.DAOFuncionario;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -22,7 +23,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import smartcall.java.Database.FuncionarioDB;
 
 /**
  * FXML Controller class
@@ -92,7 +92,7 @@ public class U_FuncionarioController implements Initializable {
     @FXML
     public void ExcluirFuncionario() {
 
-        FuncionarioDB chDB = new FuncionarioDB();
+        DAOFuncionario chDB = new DAOFuncionario();
 
         if (chDB.ExcluirFuncionario()) {
 

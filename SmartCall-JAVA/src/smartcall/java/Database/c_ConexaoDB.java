@@ -11,7 +11,7 @@ public class c_ConexaoDB {
     private static String url = "jdbc:postgresql://localhost:5432/SmartCall";
     private static String usuario = "postgres";
     private static String senha = "123456";
-
+    private static String nomeBanco = "SmartCall";
     
     private c_ConexaoDB(){}
     
@@ -22,6 +22,7 @@ public class c_ConexaoDB {
                 connection = DriverManager.getConnection(url, usuario, senha);
             }catch(SQLException ex){
                 System.out.println("Houve um erro ao conectar com o Banco de Dados.");
+                throw new RuntimeException(ex);
             }
         }
         return connection;

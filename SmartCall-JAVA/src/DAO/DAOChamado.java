@@ -5,52 +5,121 @@
  */
 package DAO;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import smartcall.java.Classes.Chamado;
+import smartcall.java.Database.c_ConexaoDB;
 
 /**
  *
  * @author Raissa do Valle
  */
 public class DAOChamado {
-     public List<Chamado> getList()
+    
+    
+    public List<Chamado> getList()
     {
-        List<Chamado> PessoaF = new ArrayList<>();
-        
-        String sql = "SELECT * from chamado";
+        List<Chamado> listaChamados = new ArrayList<>();
+        Connection con = c_ConexaoDB.getConnection();
+        String sql = "SELECT c*, cli.cpfCnpj, cli.nome, func.cpfCnpj, func.nome from chamado c "
+                + "join cliente cli on c.idCliente = cli.cpjCnpj "
+                + "join funcionario func on func.cpjCnpj = c.idFuncionario "
+                + "join setor s on s.idSetor = c.idSetor;";
         
         try
         {
             PreparedStatement stmt = con.prepareStatement(sql);
-            ResultSet rs = stm.ExecuteQuery();
+            ResultSet rs = stmt.executeQuery();
         
             while(rs.next())
             {
                  Chamado c = new Chamado();
-                 c.setCodigo(rs.getInt("c.codigo"));   //tem que ter o c. ou não?
+                 c.setCodigo(rs.getInt("c.codigo"));  
                  c.setAssunto(rs.getString("c.assunto"));
                  c.setDescricao(rs.getString("c.descricao"));
                  c.setStatus(rs.getString("c.status"));
-                 c.setIdSetor(rs.getString("c.setor"));  ///ver sobre o setor no banco
-                 c.setNomeSetor(rs.getString("c.setor"));              ///ver sobre o setor no banco
-                 c.setDataInicial(rs.getString(" c.data_inicio"));
-                 c.setDataFinal(rs.getString("c.data_fim"));
-                // c.setCodigo(rs.getString("cl.nome"));
-                // c.setCodigo(rs.getString("f.nome"));
-                 c.setChv_funcionario(rs.getString("c.id_funcionario"));
-                 c.setChv_cliente(rs.getString("c.id_cliente"));
-              
+                                  
+                 c.setDataInicial(rs.getString(" c.dataInicial"));
+                 c.setDataFinal(rs.getString("c.dataFinal"));
+                 
+                 c.setIdSetor(rs.getString("c.idSetor")); 
+                 c.setNomeSetor(rs.getString("c.nomeSetor")); 
+
+                 c.setIdCliente(rs.getString("cl.idCliente"));
+                 c.setNomeCliente(rs.getString("cl.nomeCliente"));
+                 
+                 c.setNomeFuncionario(rs.getString("f.nomeFuncionario"));
+                 c.setIdFuncionario(rs.getString("c.idFuncionario"));
+                 
+                 listaChamados.add(c);
             }
+            stmt.close();
+            rs.close();
         }
         catch(SQLException ex)
         {
-            
+            System.out.println("Erro, lista não retornada");
+            return null;
         }
+        return listaChamados;               
+    }
+    
+    public boolean AdicionarChamado(Chamado chamado) {
+        Connection con = c_ConexaoDB.getConnection();
         
-                
+        String sql = "INSERT INTO chamado (assunto, descricao, status, idSetor, dataInicial, dataFinal, idCliente, idFuncionario) " 
+                    + "VALUES ('" + chamado.getAssunto() + "', '" + chamado.getDescricao() + "', 'Pendente', " + chamado.getIdSetor() + ", '" 
+                + chamado.getDataInicial() + "', '" + chamado.getDataFinal() + "', '" + chamado.getIdCliente() + "', '" + chamado.getIdFuncionario() + "')";
+        
+        try{
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.execute();
+            return true;
+        }
+        catch(SQLException ex){
+            System.out.println(ex);
+            return false;            
+        }
+    }
+
+    public boolean ExcluirChamado(int codigo) {
+                Connection con = c_ConexaoDB.getConnection();
+        
+        String sql = "DELETE FROM chamado WHERE codigo = " + codigo + ";";
+        
+        try{
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.execute();
+            return true;
+        }
+        catch(SQLException ex){
+            System.out.println(ex);
+            return false;            
+        }
+    }
+    
+        public boolean AtualizarChamado(Chamado chamado) {
+        Connection con = c_ConexaoDB.getConnection();
+        
+        String sql = "UPDATE chamado SET assunto = '" + chamado.getAssunto() + "', descricao = '" + chamado.getDescricao() + "', status ='" + chamado.getStatus() + "', " +
+                    "setor = " + chamado.getIdSetor() + ", dataFinal = '" + chamado.getDataFinal() + "', idCliente = '" + chamado.getIdCliente() + "', idFuncionario = '" + chamado.getIdFuncionario() + "'WHERE codigo = " + chamado.getCodigo() + ";";
+        
+        try{
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.execute();
+            return true;
+        }
+        catch(SQLException ex){
+            System.out.println(ex);
+            return false;            
+        }
+    }
+
+    public void SalvarChamado(Chamado chamado) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

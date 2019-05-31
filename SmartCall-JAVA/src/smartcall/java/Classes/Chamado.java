@@ -8,9 +8,9 @@ public class Chamado {
     private String status;
     private String idSetor;
     private String nomeSetor;
-    private String chv_funcionario;
+    private String idFuncionario;
     private String nomeFuncionario;
-    private String chv_cliente;
+    private String idCliente;
     private String nomeCliente;
     private String dataInicial;
     private String dataFinal;
@@ -44,15 +44,25 @@ public class Chamado {
     public void setNomeSetor(String nomeSetor) { 
         this.nomeSetor = nomeSetor;
     }
-
-    public String getChv_funcionario() {return chv_funcionario;}
-    public void setChv_funcionario(String chv_funcionario) {
-        this.chv_funcionario = chv_funcionario;
+    
+    public String getNomeFuncionario() {return nomeFuncionario;}
+    public void setNomeFuncionario(String nomeFuncionario) { 
+        this.nomeFuncionario = nomeFuncionario;
+    }
+    
+    public String getNomeCliente() {return nomeCliente;}
+    public void setNomeCliente(String nomeCliente) { 
+        this.nomeCliente = nomeCliente;
     }
 
-    public String getChv_cliente() {return chv_cliente;}
-    public void setChv_cliente(String chv_cliente) {
-        this.chv_cliente = chv_cliente;
+    public String getIdFuncionario() {return idFuncionario;}
+    public void setIdFuncionario(String idFuncionario) {
+        this.idFuncionario = idFuncionario;
+    }
+
+    public String getIdCliente() {return idCliente;}
+    public void setIdCliente(String idCliente) {
+        this.idCliente = idCliente;
     }
 
     public String getDataInicial() {return dataInicial;}

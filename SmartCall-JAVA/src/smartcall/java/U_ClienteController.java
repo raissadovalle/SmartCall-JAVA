@@ -5,6 +5,7 @@
  */
 package smartcall.java;
 
+import DAO.DAOCliente;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -21,7 +22,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import smartcall.java.Database.ClienteDB;
 
 /**
  * FXML Controller class
@@ -89,7 +89,7 @@ public class U_ClienteController implements Initializable {
 
     public void ExcluirCliente() {
 
-        ClienteDB chDB = new ClienteDB();
+        DAOCliente chDB = new DAOCliente();
 
         if (chDB.ExcluirCliente()) {
 

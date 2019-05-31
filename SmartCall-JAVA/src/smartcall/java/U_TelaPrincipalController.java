@@ -1,10 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package smartcall.java;
 
+import DAO.DAOChamado;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -29,7 +25,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import smartcall.java.Classes.Chamado;
-import smartcall.java.Database.ChamadoDB;
 
 /**
  * FXML Controller class
@@ -38,61 +33,41 @@ import smartcall.java.Database.ChamadoDB;
  */
 public class U_TelaPrincipalController implements Initializable {
 
-
     @FXML
-    private ListView<?> chamadoScene;
-    
+    private ListView<?> chamadoScene;   
     @FXML
     private HBox panelBotoes;
-
     @FXML
     private Button btnAdicionar;
-
     @FXML
-    private TableView<Chamado> gridChamado;
-    
+    private TableView<Chamado> gridChamado;   
     @FXML
-    private TableColumn<Chamado, String> idChamado;
-    
+    private TableColumn<Chamado, String> idChamado;  
     @FXML
     private TableColumn<Chamado, String> nomeCliente;
-
     @FXML
-    private TableColumn<Chamado, String> nomeFuncionario;
-        
+    private TableColumn<Chamado, String> nomeFuncionario;    
     @FXML
     private TableColumn<Chamado, String> assunto;
-
     @FXML
     private TableColumn<Chamado, String> dataIni;
-    
-        @FXML
+    @FXML
     private TableColumn<Chamado, String> dataFim;
-
     @FXML
     private TableColumn<Chamado, String> status;
-
     @FXML
     private Button btnVisualizar;
-
     @FXML
     private Button btnEditar;
-
     @FXML
     private Button btnRemover;
-
-    
-    private ArrayList<Chamado> listaChamados = new ArrayList();
-    
-    
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
         panelBotoes.setSpacing(50);
         panelBotoes.setAlignment(Pos.CENTER);
-        BuscarListaChamados();
-           
+        
     }
 
     @FXML
@@ -131,7 +106,7 @@ public class U_TelaPrincipalController implements Initializable {
 
     public void ExcluirChamado() {
 
-        ChamadoDB chDB = new ChamadoDB();
+        DAOChamado chDB = new DAOChamado();
 
         if (chDB.ExcluirChamado()) {
 
@@ -169,17 +144,9 @@ public class U_TelaPrincipalController implements Initializable {
         
         gridChamado.setItems(AtualizaTabela());
     }
-
-    private void BuscarListaChamados() {
-        ChamadoDB chDB = new ChamadoDB();
-        
-        listaChamados = chDB.BuscarListaChamados();
-        gridChamado.getItems().addAll(listaChamados);
-     
-    }
     
     private ObservableList<Chamado> AtualizaTabela(){
-        Chamado chamado = new Chamado();
+        DAOChamado chamado = new DAOChamado();
         
         return FXCollections.observableArrayList(chamado.getList());
     }
