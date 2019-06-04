@@ -29,8 +29,8 @@ public class DAOChamado {
                 + " c.datainicial as dataInicial, c.datafinal as dataFinal, c.idcliente as idCliente, cli.nome as nomeCliente,"
                 + " c.idfuncionario as idFuncionario, func.nome as nomeFuncionario, c.idsetor as idSetor, s.nomesetor as nomeSetor"
                 + " from chamado c "
-                + "join cliente cli on c.idcliente = cli.cpfcnpj "
-                + "join funcionario func on func.cpfcnpj = c.idfuncionario "
+                + "left join cliente cli on c.idcliente = cli.cpfcnpj "
+                + "left join funcionario func on func.cpfcnpj = c.idfuncionario "
                 + "join setor s on s.idsetor = c.idsetor;";
         
         try

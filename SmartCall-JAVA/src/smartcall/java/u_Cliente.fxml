@@ -46,12 +46,13 @@
             </StackPane>
          </top>
          <center>
-            <TableView prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <TableView fx:id="gridCliente" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
               <columns>
-                <TableColumn prefWidth="300.0" text="Nome" />
-                <TableColumn prefWidth="120.0" text="Telefone" />
-                  <TableColumn prefWidth="300.0" text="Endereço" />
-                  <TableColumn prefWidth="150.0" text="Cidade" />
+                  <TableColumn fx:id="cpfcnpj" prefWidth="130.0" text="CPF/CNPJ" />
+                <TableColumn fx:id="nome" prefWidth="300.0" text="Nome" />
+                <TableColumn fx:id="telefone" prefWidth="120.0" text="Telefone" />
+                  <TableColumn fx:id="email" prefWidth="300.0" text="E-Mail" />
+                  <TableColumn fx:id="cidade" prefWidth="150.0" text="Cidade" />
               </columns>
             </TableView>
          </center>

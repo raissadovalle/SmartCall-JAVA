@@ -79,20 +79,31 @@ public class U_TelaPrincipalController implements Initializable {
         stage.setScene(new Scene(root));
         stage.showAndWait();
         
-        AtualizaTabela();
+        InitTable();
 
     }
 
     @FXML
     private void VisualizarChamado(MouseEvent event) throws IOException {
 
-        Stage stage = new Stage();
-        Parent root = FXMLLoader.load(getClass().getResource("w_CadastroChamado.fxml"));
-
-        stage.setTitle("Editar chamado");
-        stage.setScene(new Scene(root));
-        stage.show();
-
+        Chamado Dados = gridChamado.getFocusModel().getFocusedItem();
+        
+        if(Dados != null){
+            
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("w_CadastroChamado.fxml"));
+            Parent root = loader.load();
+            
+            W_CadastroChamadoController controllercadastro = loader.getController();
+            controllercadastro.chamado = Dados;
+            controllercadastro.AtribuirChamado();
+            
+            Stage stage = new Stage();
+            stage.setTitle("Editar chamado");
+            stage.setScene(new Scene(root));
+            stage.show();
+            
+        }   
     }
 
     public void DetalharChamado(MouseEvent event) throws IOException {
@@ -107,12 +118,11 @@ public class U_TelaPrincipalController implements Initializable {
 
     public void ExcluirChamado() {
         
-        DAOChamado chDB = new DAOChamado();
-
         if(gridChamado.getSelectionModel().getSelectedItem() != null){
             
-            Chamado ch = new Chamado();
-            ch = gridChamado.getSelectionModel().getSelectedItem();
+            
+            DAOChamado chDB = new DAOChamado();
+            Chamado ch =  gridChamado.getSelectionModel().getSelectedItem();
             
             if (chDB.ExcluirChamado(ch.getCodigo())) {
 
@@ -142,6 +152,9 @@ public class U_TelaPrincipalController implements Initializable {
 
             }
         }
+        
+        InitTable();
+        
     }
     
     private void InitTable(){

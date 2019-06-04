@@ -59,12 +59,11 @@ public class W_CadastroChamadoController implements Initializable {
 
     @FXML
     private DatePicker dataFinal;
-        
-    private Chamado chamado;
+
+    public Chamado chamado;
     public Cliente chamadoCliente;
     public Funcionario chamadoFuncionario;
     public Setor setorSelecionado;
-
 
     public W_CadastroChamadoController(Chamado chamado) {
 
@@ -87,22 +86,25 @@ public class W_CadastroChamadoController implements Initializable {
         DAOChamado chDB = new DAOChamado();
         Chamado chamado = new Chamado();
 
+        chamado.setAssunto(assunto.getText());
+        chamado.setDescricao(descricao.getText());
+        chamado.setIdCliente(chamadoCliente.getCpfCnpj());
+        chamado.setIdFuncionario(chamadoFuncionario.getCpfCnpj());
+        chamado.setIdSetor(setorSelecionado.getIdSetor());
+        chamado.setDataInicial(LocalDate.now().toString());
+        chamado.setDataFinal(dataFinal.getValue().toString());
+        
         if (validaDados()) {
-            chamado.setAssunto(assunto.getText());
-            chamado.setDescricao(descricao.getText());
-            chamado.setIdCliente(chamadoCliente.getCpfCnpj());
-            chamado.setIdFuncionario(chamadoFuncionario.getCpfCnpj());
-            chamado.setIdSetor(setorSelecionado.getIdSetor());
-            chamado.setDataInicial(LocalDate.now().toString());
-            chamado.setDataFinal(dataFinal.getValue().toString());
-
+            
             if (chDB.AdicionarChamado(chamado)) {
                 Alert al = new Alert(Alert.AlertType.CONFIRMATION);
                 al.setHeaderText("Chamado cadastrado!");
                 al.show();
                 Stage stage = (Stage) sairTela.getScene().getWindow();
                 stage.close();
+                
             } else {
+                
                 Alert al = new Alert(Alert.AlertType.ERROR);
                 al.setHeaderText("Chamado não cadastrado, tente novamente mais tarde!");
                 al.show();
@@ -110,7 +112,9 @@ public class W_CadastroChamadoController implements Initializable {
 
             Stage stage = (Stage) sairTela.getScene().getWindow();
             stage.close();
+            
         } else {
+            
             Alert al = new Alert(Alert.AlertType.ERROR);
             al.setHeaderText("Preencha os campos obrigatórios!");
             al.show();
@@ -121,18 +125,17 @@ public class W_CadastroChamadoController implements Initializable {
     public void AbrirTelaPesquisaClientes(MouseEvent event) {
 
         try {
-            
+
             Stage stage = new Stage();
-            Parent root;
-            root = FXMLLoader.load(getClass().getResource("w_TelaConsultaCliente.fxml"));
-            
+            Parent root = FXMLLoader.load(getClass().getResource("w_TelaConsultaCliente.fxml"));
+
             stage.setTitle("Clientes");
             stage.setScene(new Scene(root));
             stage.showAndWait();
-                       
+
             chamadoCliente = W_TelaConsultaClienteController.MeuController.getCliente();
             setarCliente();
-            
+
         } catch (IOException ex) {
             Logger.getLogger(W_TelaConsultaClienteController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -146,14 +149,13 @@ public class W_CadastroChamadoController implements Initializable {
             Stage stage = new Stage();
             Parent root;
             root = FXMLLoader.load(getClass().getResource("w_TelaConsultaFuncionario.fxml"));
-            
+
             stage.setTitle("Funcionarios");
             stage.setScene(new Scene(root));
             stage.showAndWait();
-            
+
             chamadoFuncionario = W_TelaConsultaFuncionarioController.MeuController.getFuncionario();
             setarFuncionario();
-            
 
         } catch (IOException ex) {
             Logger.getLogger(W_TelaConsultaFuncionarioController.class.getName()).log(Level.SEVERE, null, ex);
@@ -162,87 +164,86 @@ public class W_CadastroChamadoController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+
         populaComboBox();
     }
 
     public boolean validaDados() {
         boolean isValid = true;
-
-        /*if (assunto.getText() == null) {
-            isValid = false;
-        }
-        if (descricao.getText() == null) {
-            isValid = false;
-        }*/
-        /*if(idCliente.getText() == null)
-        {
-            isValid = false;
-        }
-        if(idSetor.getText() == null)
-        {
-            isValid = false;
-        }
-        if(idFuncionario.getText() == null)
-        {
-            isValid = false;
-        }*/
-
+        
+//        if (chamado.getAssunto() == null) {
+//            isValid = false;
+//        }
+//        if (chamado.getDescricao() == null) {
+//            isValid = false;
+//        }
+//        if (chamado.getIdCliente() == null) {
+//            isValid = false;
+//        }
+//        if (chamado.getIdSetor() == null) {
+//            isValid = false;
+//        }
+//        if (chamado.getIdFuncionario() == null) {
+//            isValid = false;
+//        }
+        
         return isValid;
     }
 
-
     private void setarCliente() {
-        
+
         nomeCliente.setText(chamadoCliente.getNome());
-        
+
     }
 
     private void setarFuncionario() {
-        
+
         nomeFuncionario.setText(chamadoFuncionario.getNome());
     }
 
-    private void populaComboBox()
-    {
+    private void populaComboBox() {
         ObservableList<Setor> listaSetor = FXCollections.observableArrayList(getListSetor());
 
-        setores.setItems(listaSetor);      
+        setores.setItems(listaSetor);
     }
-    
+
     private List<Setor> getListSetor() {
-        
+
         String sql = "SELECT idsetor, nomesetor FROM setor";
         List<Setor> listaSetor = new ArrayList<>();
         Connection con = c_ConexaoDB.getConnection();
-        try
-        {
+        try {
             PreparedStatement stmt = con.prepareStatement(sql);
             ResultSet rs = stmt.executeQuery();
-        
-            while(rs.next())
-            {
-                 Setor c = new Setor();
-                 
-                 c.setIdSetor(rs.getString("idsetor"));  
-                 c.setNomeSetor(rs.getString("nomesetor"));
 
-                 listaSetor.add(c);
+            while (rs.next()) {
+                Setor c = new Setor();
+
+                c.setIdSetor(rs.getString("idsetor"));
+                c.setNomeSetor(rs.getString("nomesetor"));
+
+                listaSetor.add(c);
             }
             stmt.close();
             rs.close();
-        }
-        catch(SQLException ex)
-        {
+        } catch (SQLException ex) {
             System.out.println("Erro, lista não retornada");
             return null;
         }
         return listaSetor;
     }
-    
+
     @FXML
-    public void selecionarSetor()
-    {
+    public void selecionarSetor() {
         setorSelecionado = setores.getSelectionModel().getSelectedItem();
+    }
+
+    public void AtribuirChamado() {
+       
+        nomeCliente.setText(chamado.getNomeCliente());
+        nomeFuncionario.setText(chamado.getNomeFuncionario());
+        assunto.setText(chamado.getAssunto());
+        descricao.setText(chamado.getStatus());
+
     }
 }

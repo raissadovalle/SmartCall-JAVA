@@ -32,6 +32,7 @@ public class DAOCliente {
                     c.setNome(rs.getString("nome"));
                     c.setTelefone(rs.getString("telefone"));
                     c.setEmail(rs.getString("email"));
+                    c.setCidade(rs.getString("cidade"));
                     
                     listaCliente.add(c);
                 }
