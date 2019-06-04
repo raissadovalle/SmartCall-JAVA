@@ -24,7 +24,9 @@ public class DAOFuncionario {
      {
         List<Funcionario> listaFuncionario = new ArrayList<>();
         Connection con = c_ConexaoDB.getConnection();
-        String sql = "SELECT f.*, s.idSetor, s.nomeSetor from funcionario f join setor s on s.idSetor = f.idSetor;";
+        
+        String sql = "SELECT f.cpfcnpj, f.nome, f.email, s.idsetor, s.nomesetor from funcionario f "
+                + "JOIN setor s on s.idsetor = f.idsetor;";
         
         try
         {
@@ -35,12 +37,11 @@ public class DAOFuncionario {
             {
                  Funcionario c = new Funcionario();
                  
-                 c.setCpfCnpj(rs.getString("f.cpfCnpj"));  
-                 c.setNome(rs.getString("f.nome"));
-                 c.setTelefone(rs.getString("f.email"));
-                 c.setEmail(rs.getString("f.email"));
-                 c.setIdSetor(rs.getInt("f.idSetor"));
-                 c.setNomeSetor(rs.getString("f.nomeSetor"));
+                 c.setCpfCnpj(rs.getString("cpfcnpj"));  
+                 c.setNome(rs.getString("nome"));
+                 c.setEmail(rs.getString("email"));
+                 c.setIdSetor(rs.getString("idsetor"));
+                 c.setNomeSetor(rs.getString("nomesetor"));
 
                  listaFuncionario.add(c);
             }

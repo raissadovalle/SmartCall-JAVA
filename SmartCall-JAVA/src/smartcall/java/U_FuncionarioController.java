@@ -93,8 +93,9 @@ public class U_FuncionarioController implements Initializable {
     public void ExcluirFuncionario() {
 
         DAOFuncionario chDB = new DAOFuncionario();
-
-        if (chDB.ExcluirFuncionario()) {
+        String test = "";
+        
+        if (chDB.ExcluirFuncionario(test)) {
 
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("SmartCall");

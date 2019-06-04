@@ -36,7 +36,7 @@ public class W_CadastroClienteController implements Initializable {
     
     public void SalvarDados(MouseEvent event){
         
-        if(validaDados())
+        /*if(validaDados())
         {
             DAOCliente chDB = new DAOCliente();
             Cliente cliente = new Cliente();
@@ -75,11 +75,11 @@ public class W_CadastroClienteController implements Initializable {
             Alert al = new Alert(Alert.AlertType.ERROR);
             al.setHeaderText("Preencha os campos obrigatórios!");
             al.show();
-        }
+        }*/
         
     }
     
-    public boolean validaDados()
+    /*public boolean validaDados()
     {
         boolean isValid = true;
         if(cpfCnpj.getText() != null)
@@ -151,7 +151,5 @@ public class W_CadastroClienteController implements Initializable {
             isValid = false;
         }
         return isValid;
-    }
-    
-    
+    }*/
 }

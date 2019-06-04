@@ -3,7 +3,6 @@ package smartcall.java;
 import DAO.DAOChamado;
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -34,15 +33,13 @@ import smartcall.java.Classes.Chamado;
 public class U_TelaPrincipalController implements Initializable {
 
     @FXML
-    private ListView<?> chamadoScene;   
-    @FXML
     private HBox panelBotoes;
     @FXML
     private Button btnAdicionar;
     @FXML
     private TableView<Chamado> gridChamado;   
     @FXML
-    private TableColumn<Chamado, String> idChamado;  
+    private TableColumn<Chamado, String> codigo;  
     @FXML
     private TableColumn<Chamado, String> nomeCliente;
     @FXML
@@ -50,25 +47,27 @@ public class U_TelaPrincipalController implements Initializable {
     @FXML
     private TableColumn<Chamado, String> assunto;
     @FXML
-    private TableColumn<Chamado, String> dataIni;
+    private TableColumn<Chamado, String> dataInicial;
     @FXML
-    private TableColumn<Chamado, String> dataFim;
+    private TableColumn<Chamado, String> dataFinal;
     @FXML
     private TableColumn<Chamado, String> status;
+    @FXML
+    private TableColumn<Chamado, String> nomeSetor;
     @FXML
     private Button btnVisualizar;
     @FXML
     private Button btnEditar;
     @FXML
     private Button btnRemover;
-    
+              
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
         panelBotoes.setSpacing(50);
-        panelBotoes.setAlignment(Pos.CENTER);
-        
-    }
+        panelBotoes.setAlignment(Pos.CENTER); 
+        InitTable();
+    }       
 
     @FXML
     private void AdicionarChamado(MouseEvent event) throws IOException {
@@ -78,7 +77,9 @@ public class U_TelaPrincipalController implements Initializable {
 
         stage.setTitle("Cadastro de chamados");
         stage.setScene(new Scene(root));
-        stage.show();
+        stage.showAndWait();
+        
+        AtualizaTabela();
 
     }
 
@@ -105,49 +106,61 @@ public class U_TelaPrincipalController implements Initializable {
     }
 
     public void ExcluirChamado() {
-
+        
         DAOChamado chDB = new DAOChamado();
 
-        if (chDB.ExcluirChamado()) {
+        if(gridChamado.getSelectionModel().getSelectedItem() != null){
+            
+            Chamado ch = new Chamado();
+            ch = gridChamado.getSelectionModel().getSelectedItem();
+            
+            if (chDB.ExcluirChamado(ch.getCodigo())) {
 
-            Alert alert = new Alert(AlertType.INFORMATION);
-            alert.setTitle("SmartCall");
-            alert.setHeaderText("Chamado Excluido com sucesso!");
-            alert.showAndWait().ifPresent(rs -> {
-                if (rs == ButtonType.OK) {
-                    System.out.println("Pressed OK.");
-                }
-            });
+                Alert alert = new Alert(AlertType.INFORMATION);
+                alert.setTitle("SmartCall");
+                alert.setHeaderText("Chamado Excluido com sucesso!");
+                alert.showAndWait().ifPresent(rs -> {
 
-        } else {
+                    if (rs == ButtonType.OK) {
+                        System.out.println("Pressed OK.");
+                    }
 
-            Alert alert = new Alert(AlertType.INFORMATION);
-            alert.setTitle("SmartCall");
-            alert.setHeaderText("O chamado não foi excluido com sucesso");
-            alert.showAndWait().ifPresent(rs -> {
-                if (rs == ButtonType.OK) {
-                    System.out.println("Pressed OK.");
-                }
-            });
+                });
 
+            } else {
+
+                Alert alert = new Alert(AlertType.INFORMATION);
+                alert.setTitle("SmartCall");
+                alert.setHeaderText("O chamado não foi excluido com sucesso");
+                alert.showAndWait().ifPresent(rs -> {
+
+                    if (rs == ButtonType.OK) {
+                        System.out.println("Pressed OK.");
+                    }
+
+                });
+
+            }
         }
     }
     
     private void InitTable(){
-        idChamado.setCellValueFactory(new PropertyValueFactory("idChamado"));
+              
+        codigo.setCellValueFactory(new PropertyValueFactory("codigo"));
         nomeCliente.setCellValueFactory(new PropertyValueFactory("nomeCliente"));
         nomeFuncionario.setCellValueFactory(new PropertyValueFactory("nomeFuncionario"));
-        dataIni.setCellValueFactory(new PropertyValueFactory("dataIni"));
-        dataFim.setCellValueFactory(new PropertyValueFactory("dataFim"));
+        dataInicial.setCellValueFactory(new PropertyValueFactory("dataInicial"));
+        dataFinal.setCellValueFactory(new PropertyValueFactory("dataFinal"));
         assunto.setCellValueFactory(new PropertyValueFactory("assunto"));
         status.setCellValueFactory(new PropertyValueFactory("status"));
+        nomeSetor.setCellValueFactory(new PropertyValueFactory("nomeSetor"));
         
         gridChamado.setItems(AtualizaTabela());
     }
     
     private ObservableList<Chamado> AtualizaTabela(){
-        DAOChamado chamado = new DAOChamado();
         
+        DAOChamado chamado = new DAOChamado();    
         return FXCollections.observableArrayList(chamado.getList());
     }
 }

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="smartcall.java.W_TelaConsultaFuncionarioController">
+   <children>
+      <TableView fx:id="gridFuncionario" onMouseClicked="#SelecionarFuncionario" prefHeight="406.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <columns>
+          <TableColumn fx:id="funcionarioCpf" prefWidth="120.0" text="CPF" />
+          <TableColumn fx:id="funcionarioNome" prefWidth="250.0" text="Nome" />
+            <TableColumn fx:id="funcionarioSetor" prefWidth="120.0" text="Setor" />
+            <TableColumn fx:id="funcionarioEmail" prefWidth="300.0" text="Email" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

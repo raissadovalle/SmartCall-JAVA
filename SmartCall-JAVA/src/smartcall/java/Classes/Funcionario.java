@@ -3,7 +3,7 @@ package smartcall.java.Classes;
 public class Funcionario{
 
     private String cargo;
-    private int idSetor;
+    private String idSetor;
     private String nomeSetor;
     private String cpfCnpj;
     private String nome;
@@ -70,8 +70,8 @@ public class Funcionario{
         this.cargo = cargo;
     }
     
-    public int getIdSetor() { return idSetor;}
-    public void setIdSetor(int idSetor){
+    public String getIdSetor() { return idSetor;}
+    public void setIdSetor(String idSetor){
         this.idSetor = idSetor;
     }
     

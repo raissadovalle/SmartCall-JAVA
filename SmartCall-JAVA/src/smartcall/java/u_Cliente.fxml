@@ -14,9 +14,6 @@
          <bottom>
             <StackPane prefHeight="75.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
          </bottom>
-         <center>
-            <ListView prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
-         </center>
          <left>
             <StackPane prefWidth="250.0" BorderPane.alignment="CENTER">
                <children>
@@ -48,6 +45,16 @@
                </BorderPane.margin>
             </StackPane>
          </top>
+         <center>
+            <TableView prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+              <columns>
+                <TableColumn prefWidth="300.0" text="Nome" />
+                <TableColumn prefWidth="120.0" text="Telefone" />
+                  <TableColumn prefWidth="300.0" text="Endereço" />
+                  <TableColumn prefWidth="150.0" text="Cidade" />
+              </columns>
+            </TableView>
+         </center>
       </BorderPane>
    </children>
 </StackPane>

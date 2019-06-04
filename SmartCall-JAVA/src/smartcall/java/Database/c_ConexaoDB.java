@@ -11,7 +11,6 @@ public class c_ConexaoDB {
     private static String url = "jdbc:postgresql://localhost:5432/SmartCall";
     private static String usuario = "postgres";
     private static String senha = "123456";
-    private static String nomeBanco = "SmartCall";
     
     private c_ConexaoDB(){}
     

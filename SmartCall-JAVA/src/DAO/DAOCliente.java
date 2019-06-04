@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package DAO;
 
 import java.sql.Connection;
@@ -14,42 +9,40 @@ import java.util.List;
 import smartcall.java.Classes.Cliente;
 import smartcall.java.Database.c_ConexaoDB;
 
-/**
- *
- * @author Raissa do Valle
- */
 public class DAOCliente {
     
      public List<Cliente> getList()
      {
+         
         List<Cliente> listaCliente = new ArrayList<>();
+        
         Connection con = c_ConexaoDB.getConnection();
-        String sql = "SELECT c.cpfCnpj, c.nome, c.telefone, c.email from cliente c;";
+        String sql = "SELECT cpfcnpj, nome, logradouro, numero, bairro, cidade, cep, estado, telefone, email, representante, rg, ie FROM cliente";
         
         try
         {
-            PreparedStatement stmt = con.prepareStatement(sql);
-            ResultSet rs = stmt.executeQuery();
-        
-            while(rs.next())
-            {
-                 Cliente c = new Cliente();
-                 
-                 c.setCpfCnpj(rs.getString("c.cpfCnpj"));  
-                 c.setNome(rs.getString("c.nome"));
-                 c.setTelefone(rs.getString("c.telefone"));
-                 c.setEmail(rs.getString("c.email"));
-
-                 listaCliente.add(c);
+            ResultSet rs;
+            try (PreparedStatement stmt = con.prepareStatement(sql)) {
+                rs = stmt.executeQuery();
+                while(rs.next())
+                {
+                    Cliente c = new Cliente();
+                    
+                    c.setCpfCnpj(rs.getString("cpfcnpj"));
+                    c.setNome(rs.getString("nome"));
+                    c.setTelefone(rs.getString("telefone"));
+                    c.setEmail(rs.getString("email"));
+                    
+                    listaCliente.add(c);
+                }
             }
-            stmt.close();
             rs.close();
         }
         catch(SQLException ex)
         {
             System.out.println("Erro, lista não retornada");
-            return null;
         }
+        
         return listaCliente;               
     }
 
@@ -72,7 +65,8 @@ public class DAOCliente {
     }
 
     public boolean ExcluirCliente(String cpfCnpj) {
-                Connection con = c_ConexaoDB.getConnection();
+        
+        Connection con = c_ConexaoDB.getConnection();
         
         String sql = "DELETE FROM cliente WHERE cpfCnpj = '" + cpfCnpj + "';";
         

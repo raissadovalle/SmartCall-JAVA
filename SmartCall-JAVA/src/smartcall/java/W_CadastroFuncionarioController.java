@@ -32,7 +32,7 @@ public class W_CadastroFuncionarioController implements Initializable {
     
     public void SalvarDados(MouseEvent event){
         
-        if(validaDados())
+        /*if(validaDados())
         {  
             DAOFuncionario chDB = new DAOFuncionario();
             Funcionario funcionario = new Funcionario();
@@ -70,11 +70,11 @@ public class W_CadastroFuncionarioController implements Initializable {
             Alert al = new Alert(AlertType.ERROR);
             al.setHeaderText("Preencha os campos obrigatórios!");
             al.show();
-        }
+        }*/
 
     }
     
-    public boolean validaDados()
+    /*public boolean validaDados()
     {
         boolean isValid = true;
         if(cpfCnpj.getText() != null)
@@ -138,6 +138,6 @@ public class W_CadastroFuncionarioController implements Initializable {
             isValid = false;
         }
         return isValid;
-    }
+    }*/
     
 }

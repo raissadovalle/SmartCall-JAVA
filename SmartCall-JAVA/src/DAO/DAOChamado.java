@@ -25,10 +25,13 @@ public class DAOChamado {
     {
         List<Chamado> listaChamados = new ArrayList<>();
         Connection con = c_ConexaoDB.getConnection();
-        String sql = "SELECT c*, cli.cpfCnpj, cli.nome, func.cpfCnpj, func.nome from chamado c "
-                + "join cliente cli on c.idCliente = cli.cpjCnpj "
-                + "join funcionario func on func.cpjCnpj = c.idFuncionario "
-                + "join setor s on s.idSetor = c.idSetor;";
+        String sql = "SELECT c.codigo as codigo, c.assunto as assunto, c.descricao as descricao, c.status as status,"
+                + " c.datainicial as dataInicial, c.datafinal as dataFinal, c.idcliente as idCliente, cli.nome as nomeCliente,"
+                + " c.idfuncionario as idFuncionario, func.nome as nomeFuncionario, c.idsetor as idSetor, s.nomesetor as nomeSetor"
+                + " from chamado c "
+                + "join cliente cli on c.idcliente = cli.cpfcnpj "
+                + "join funcionario func on func.cpfcnpj = c.idfuncionario "
+                + "join setor s on s.idsetor = c.idsetor;";
         
         try
         {
@@ -38,22 +41,22 @@ public class DAOChamado {
             while(rs.next())
             {
                  Chamado c = new Chamado();
-                 c.setCodigo(rs.getInt("c.codigo"));  
-                 c.setAssunto(rs.getString("c.assunto"));
-                 c.setDescricao(rs.getString("c.descricao"));
-                 c.setStatus(rs.getString("c.status"));
+                 c.setCodigo(rs.getInt("codigo"));  
+                 c.setAssunto(rs.getString("assunto"));
+                 c.setDescricao(rs.getString("descricao"));
+                 c.setStatus(rs.getString("status"));
                                   
-                 c.setDataInicial(rs.getString(" c.dataInicial"));
-                 c.setDataFinal(rs.getString("c.dataFinal"));
+                 c.setDataInicial(rs.getString("dataInicial"));
+                 c.setDataFinal(rs.getString("dataFinal"));
                  
-                 c.setIdSetor(rs.getString("c.idSetor")); 
-                 c.setNomeSetor(rs.getString("c.nomeSetor")); 
+                 c.setIdSetor(rs.getString("idSetor")); 
+                 c.setNomeSetor(rs.getString("nomeSetor")); 
 
-                 c.setIdCliente(rs.getString("cl.idCliente"));
-                 c.setNomeCliente(rs.getString("cl.nomeCliente"));
+                 c.setIdCliente(rs.getString("idCliente"));
+                 c.setNomeCliente(rs.getString("nomeCliente"));
                  
-                 c.setNomeFuncionario(rs.getString("f.nomeFuncionario"));
-                 c.setIdFuncionario(rs.getString("c.idFuncionario"));
+                 c.setNomeFuncionario(rs.getString("nomeFuncionario"));
+                 c.setIdFuncionario(rs.getString("idFuncionario"));
                  
                  listaChamados.add(c);
             }
@@ -63,7 +66,6 @@ public class DAOChamado {
         catch(SQLException ex)
         {
             System.out.println("Erro, lista não retornada");
-            return null;
         }
         return listaChamados;               
     }
@@ -87,16 +89,17 @@ public class DAOChamado {
     }
 
     public boolean ExcluirChamado(int codigo) {
-                Connection con = c_ConexaoDB.getConnection();
         
+        Connection con = c_ConexaoDB.getConnection();
         String sql = "DELETE FROM chamado WHERE codigo = " + codigo + ";";
         
         try{
+            
             PreparedStatement stmt = con.prepareStatement(sql);
             stmt.execute();
             return true;
-        }
-        catch(SQLException ex){
+        
+        } catch(SQLException ex){
             System.out.println(ex);
             return false;            
         }

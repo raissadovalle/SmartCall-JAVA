@@ -90,8 +90,9 @@ public class U_ClienteController implements Initializable {
     public void ExcluirCliente() {
 
         DAOCliente chDB = new DAOCliente();
-
-        if (chDB.ExcluirCliente()) {
+        String teste = null;
+        
+        if (chDB.ExcluirCliente(teste)) {
 
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("SmartCall");

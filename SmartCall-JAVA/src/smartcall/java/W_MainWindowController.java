@@ -59,7 +59,6 @@ public class W_MainWindowController implements Initializable {
 
     }
 
-    @FXML
     public void carregarTelaCliente() throws IOException {
 
         StackPane pane = FXMLLoader.load(getClass().getResource("u_Cliente.fxml"));
