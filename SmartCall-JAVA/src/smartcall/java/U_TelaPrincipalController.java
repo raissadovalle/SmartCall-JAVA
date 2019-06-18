@@ -84,7 +84,7 @@ public class U_TelaPrincipalController implements Initializable {
     }
 
     @FXML
-    private void VisualizarChamado(MouseEvent event) throws IOException {
+    private void Chamado(MouseEvent event) throws IOException {
 
         Chamado Dados = gridChamado.getFocusModel().getFocusedItem();
         
@@ -96,24 +96,45 @@ public class U_TelaPrincipalController implements Initializable {
             
             W_CadastroChamadoController controllercadastro = loader.getController();
             controllercadastro.chamado = Dados;
+            controllercadastro.DesativarCampos();
             controllercadastro.AtribuirChamado();
             
             Stage stage = new Stage();
-            stage.setTitle("Editar chamado");
+            stage.setTitle("Visualizar chamado");
             stage.setScene(new Scene(root));
-            stage.show();
+           
+            stage.showAndWait();
             
         }   
+        
+        InitTable();
     }
 
     public void DetalharChamado(MouseEvent event) throws IOException {
 
-        Stage stage = new Stage();
-        Parent root = FXMLLoader.load(getClass().getResource("w_CadastroChamado.fxml"));
+        Chamado Dados = gridChamado.getFocusModel().getFocusedItem();
+        
+        if(Dados != null){
+            
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("w_CadastroChamado.fxml"));
+            Parent root = loader.load();
+            
+            W_CadastroChamadoController controllercadastro = loader.getController();
+            controllercadastro.chamado = Dados;
+            controllercadastro.DesativarCampos();
+            controllercadastro.AtribuirChamado();
+            
+            Stage stage = new Stage();
 
-        stage.setTitle("Cadastro de chamados");
-        stage.setScene(new Scene(root));
-        stage.show();
+            controllercadastro.labelCentral.setText("Visualizar Chamado");
+            stage.setScene(new Scene(root));
+           
+            stage.showAndWait();
+            
+        }
+        
+        InitTable();
     }
 
     public void ExcluirChamado() {

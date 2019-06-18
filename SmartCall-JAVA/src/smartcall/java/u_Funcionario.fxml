@@ -35,7 +35,7 @@
                      <children>
                         <Button fx:id="btnVisualizar" mnemonicParsing="false" onMouseClicked="#VisualizarFuncionario" prefHeight="50.0" prefWidth="150.0" text="Visualizar" />
                         <Button fx:id="btnRemover" mnemonicParsing="false" onMouseClicked="#ExcluirFuncionario" prefHeight="50.0" prefWidth="150.0" text="Remover" />
-                        <Button fx:id="btnEditar" mnemonicParsing="false" onMouseClicked="#VisualizarFuncionario" prefHeight="50.0" prefWidth="150.0" text="Editar" />
+                        <Button fx:id="btnEditar" mnemonicParsing="false" onMouseClicked="#EditarFuncionario" prefHeight="50.0" prefWidth="150.0" text="Editar" />
                         <Button fx:id="btnAdicionar" mnemonicParsing="false" onMouseClicked="#AdicionarFuncionario" prefHeight="50.0" prefWidth="150.0" text="Adicionar" />
                      </children>
                   </HBox>

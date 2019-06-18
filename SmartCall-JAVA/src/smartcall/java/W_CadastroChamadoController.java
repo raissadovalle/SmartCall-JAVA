@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +26,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
@@ -38,14 +40,13 @@ import smartcall.java.Database.c_ConexaoDB;
 public class W_CadastroChamadoController implements Initializable {
 
     @FXML
+    private Button salvar;
+    @FXML
     private Button sairTela;
-
     @FXML
     private Button btnPesquisaCliente;
-
     @FXML
     private Button btnPesquisaFuncionario;
-
     @FXML
     private TextField nomeCliente;
     @FXML
@@ -56,9 +57,11 @@ public class W_CadastroChamadoController implements Initializable {
     private TextField assunto;
     @FXML
     private TextArea descricao;
-
     @FXML
     private DatePicker dataFinal;
+    
+    @FXML
+    public Label labelCentral;
 
     public Chamado chamado;
     public Cliente chamadoCliente;
@@ -171,21 +174,21 @@ public class W_CadastroChamadoController implements Initializable {
     public boolean validaDados() {
         boolean isValid = true;
         
-//        if (chamado.getAssunto() == null) {
-//            isValid = false;
-//        }
-//        if (chamado.getDescricao() == null) {
-//            isValid = false;
-//        }
-//        if (chamado.getIdCliente() == null) {
-//            isValid = false;
-//        }
-//        if (chamado.getIdSetor() == null) {
-//            isValid = false;
-//        }
-//        if (chamado.getIdFuncionario() == null) {
-//            isValid = false;
-//        }
+        if (chamado.getAssunto() == null) {
+            isValid = false;
+        }
+        if (chamado.getDescricao() == null) {
+            isValid = false;
+        }
+        if (chamado.getIdCliente() == null) {
+            isValid = false;
+        }
+        if (chamado.getIdSetor() == null) {
+            isValid = false;
+        }
+        if (chamado.getIdFuncionario() == null) {
+            isValid = false;
+        }
         
         return isValid;
     }
@@ -244,6 +247,26 @@ public class W_CadastroChamadoController implements Initializable {
         nomeFuncionario.setText(chamado.getNomeFuncionario());
         assunto.setText(chamado.getAssunto());
         descricao.setText(chamado.getStatus());
+        Setor s = new Setor();
+        s.setIdSetor(chamado.getIdSetor());
+        s.setNomeSetor(chamado.getNomeSetor());
+        
+        setores.setValue(s);
+        
+        dataFinal.setValue(LocalDate.parse(chamado.getDataFinal()));
 
+    }
+
+    public void DesativarCampos() {
+        
+        nomeCliente.setDisable(true);
+        nomeFuncionario.setDisable(true);
+        assunto.setDisable(true);
+        descricao.setDisable(true);
+        setores.setDisable(true);
+        salvar.setDisable(true);
+        dataFinal.setDisable(true);
+        btnPesquisaCliente.setDisable(true);
+        btnPesquisaFuncionario.setDisable(true);
     }
 }

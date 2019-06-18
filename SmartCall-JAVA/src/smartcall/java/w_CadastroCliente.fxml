@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
@@ -9,30 +10,55 @@
 
 <AnchorPane id="AnchorPane" prefHeight="708.0" prefWidth="1408.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="smartcall.java.W_CadastroClienteController">
    <children>
-      <Button alignment="CENTER" layoutX="522.0" layoutY="620.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" text="Salvar" textAlignment="CENTER" AnchorPane.bottomAnchor="38.0" />
+      <Button fx:id="salvar" alignment="CENTER" layoutX="522.0" layoutY="620.0" mnemonicParsing="false" onMouseClicked="#SalvarDados" prefHeight="50.0" prefWidth="150.0" text="Salvar" textAlignment="CENTER" AnchorPane.bottomAnchor="38.0" />
       <Button fx:id="sairTela" contentDisplay="CENTER" layoutX="738.0" layoutY="620.0" mnemonicParsing="false" onMouseClicked="#SairTela" prefHeight="50.0" prefWidth="150.0" text="Cancelar" AnchorPane.bottomAnchor="38.0" AnchorPane.leftAnchor="738.0" AnchorPane.rightAnchor="520.0" />
-      <Label layoutX="191.0" layoutY="169.0" text="Nome Fantasia" />
-      <TextField layoutX="191.0" layoutY="186.0" maxWidth="-Infinity" prefWidth="400.0" />
-      <Label layoutX="328.0" layoutY="278.0" text="CNPJ/CPF" />
-      <Label alignment="CENTER" layoutX="6.0" layoutY="14.0" prefHeight="53.0" prefWidth="1397.0" text="Cadastro de clientes" textAlignment="CENTER" textFill="RED">
+      <Label layoutX="197.0" layoutY="170.0" text="CNPJ/CPF" />
+      <Label fx:id="labelCentral" alignment="CENTER" layoutX="6.0" layoutY="14.0" prefHeight="53.0" prefWidth="1397.0" text="Cadastro de clientes" textAlignment="CENTER" textFill="RED">
          <font>
             <Font name="System Bold" size="36.0" />
          </font>
       </Label>
-      <TextField layoutX="191.0" layoutY="240.0" maxWidth="-Infinity" prefWidth="400.0" />
-      <Label layoutX="193.0" layoutY="223.0" text="Endereço" />
-      <TextField layoutX="328.0" layoutY="295.0" maxWidth="-Infinity" prefHeight="25.0" prefWidth="216.0" />
-      <TextField layoutX="191.0" layoutY="356.0" maxWidth="-Infinity" prefHeight="25.0" prefWidth="216.0" />
-      <Label layoutX="191.0" layoutY="339.0" text="E-mail" />
-      <Label layoutX="191.0" layoutY="401.0" text="Telefone" />
-      <TextField layoutX="191.0" layoutY="418.0" maxWidth="-Infinity" prefHeight="25.0" prefWidth="168.0" />
-      <TextField layoutX="191.0" layoutY="134.0" maxWidth="-Infinity" prefWidth="400.0" />
-      <Label layoutX="191.0" layoutY="117.0" text="Nome/Razão Social" />
-      <SplitMenuButton layoutX="191.0" layoutY="295.0" mnemonicParsing="false" text="Tipo documento">
-        <items>
-          <MenuItem mnemonicParsing="false" text="Action 1" />
-          <MenuItem mnemonicParsing="false" text="Action 2" />
-        </items>
-      </SplitMenuButton>
+      <TextField fx:id="enderecoCliente" layoutX="197.0" layoutY="300.0" maxWidth="-Infinity" prefWidth="400.0" />
+      <Label layoutX="199.0" layoutY="279.0" text="Endereço" />
+      <TextField fx:id="cnpjCpfCliente" layoutX="197.0" layoutY="191.0" maxWidth="-Infinity" prefHeight="25.0" prefWidth="216.0" />
+      <TextField fx:id="cepCliente" layoutX="197.0" layoutY="474.0" maxWidth="-Infinity" prefHeight="25.0" prefWidth="216.0" />
+      <Label layoutX="197.0" layoutY="457.0" text="CEP" />
+      <Label layoutX="197.0" layoutY="512.0" text="Telefone" />
+      <TextField fx:id="telefoneCliente" layoutX="197.0" layoutY="529.0" maxWidth="-Infinity" prefHeight="25.0" prefWidth="168.0" />
+      <TextField fx:id="nomeCliente" layoutX="197.0" layoutY="241.0" maxWidth="-Infinity" prefWidth="400.0" />
+      <Label layoutX="197.0" layoutY="224.0" text="Nome/Razão Social" />
+      <Label layoutX="615.0" layoutY="279.0" text="Numero" />
+      <TextField fx:id="numeroCliente" layoutX="613.0" layoutY="300.0" maxWidth="-Infinity" prefHeight="31.0" prefWidth="89.0" />
+      <Label layoutX="199.0" layoutY="339.0" text="Bairro" />
+      <TextField fx:id="bairroCliente" layoutX="197.0" layoutY="360.0" maxWidth="-Infinity" prefWidth="400.0" />
+      <TextField fx:id="cidadeCliente" layoutX="198.0" layoutY="417.0" maxWidth="-Infinity" prefWidth="400.0" />
+      <Label layoutX="200.0" layoutY="396.0" text="Cidade" />
+      <Label layoutX="615.0" layoutY="396.0" text="Estado" />
+      <TextField fx:id="estadoCliente" layoutX="613.0" layoutY="417.0" maxWidth="-Infinity" prefHeight="31.0" prefWidth="89.0" />
+      <TextField fx:id="emailCliente" layoutX="828.0" layoutY="187.0" maxWidth="-Infinity" prefHeight="31.0" prefWidth="367.0" />
+      <Label layoutX="828.0" layoutY="170.0" text="E-mail" />
+      <Label layoutX="828.0" layoutY="221.0" text="Representante" />
+      <TextField fx:id="representanteCliente" layoutX="828.0" layoutY="238.0" maxWidth="-Infinity" prefHeight="31.0" prefWidth="367.0" />
+      <TextField fx:id="rgCliente" layoutX="828.0" layoutY="293.0" maxWidth="-Infinity" prefHeight="31.0" prefWidth="206.0" />
+      <Label layoutX="828.0" layoutY="276.0" text="RG" />
+      <Label layoutX="828.0" layoutY="336.0" text="IE" />
+      <TextField fx:id="ieCliente" layoutX="828.0" layoutY="353.0" maxWidth="-Infinity" prefHeight="31.0" prefWidth="206.0" />
+      <HBox layoutX="194.0" layoutY="122.0" prefHeight="37.0" prefWidth="285.0">
+         <children>
+            <RadioButton fx:id="rbPessoaFisica" mnemonicParsing="false" onAction="#rbPf" text="Pessoa Fisica          ">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <toggleGroup>
+                  <ToggleGroup fx:id="rbCliente" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton fx:id="rbPessoaJuridica" mnemonicParsing="false" onAction="#rbPj" text="Pessoa Jurídica" toggleGroup="$rbCliente">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </RadioButton>
+         </children>
+      </HBox>
    </children>
 </AnchorPane>

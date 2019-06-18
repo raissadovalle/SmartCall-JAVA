@@ -33,10 +33,10 @@
                <children>
                   <HBox fx:id="panelBotoesCliente" prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Button fx:id="btnVisualizar" mnemonicParsing="false" onMouseClicked="#DetalharCliente" prefHeight="50.0" prefWidth="150.0" text="Visualizar" />
+                        <Button fx:id="btnVisualizar" mnemonicParsing="false" onMouseClicked="#VisualizarCliente" prefHeight="50.0" prefWidth="150.0" text="Visualizar" />
                         <Button fx:id="btnRemover" mnemonicParsing="false" onMouseClicked="#ExcluirCliente" prefHeight="50.0" prefWidth="150.0" text="Remover" />
-                        <Button fx:id="btnEditar" mnemonicParsing="false" onMouseClicked="#VisualizarCliente" prefHeight="50.0" prefWidth="150.0" text="Editar" />
-                        <Button fx:id="btnAdicionar" mnemonicParsing="false" onMouseClicked="#VisualizarCliente" prefHeight="50.0" prefWidth="150.0" text="Adicionar" />
+                        <Button fx:id="btnEditar" mnemonicParsing="false" onMouseClicked="#EditarCliente" prefHeight="50.0" prefWidth="150.0" text="Editar" />
+                        <Button fx:id="btnAdicionar" mnemonicParsing="false" onMouseClicked="#AdicionarCliente" prefHeight="50.0" prefWidth="150.0" text="Adicionar" />
                      </children>
                   </HBox>
                </children>

@@ -49,7 +49,7 @@
                      <children>
                         <Button fx:id="btnAdicionar" mnemonicParsing="false" onMouseClicked="#AdicionarChamado" prefHeight="50.0" prefWidth="150.0" text="Adicionar" />
                         <Button fx:id="btnVisualizar" mnemonicParsing="false" onMouseClicked="#DetalharChamado" prefHeight="50.0" prefWidth="150.0" text="Visualizar" />
-                        <Button fx:id="btnEditar" mnemonicParsing="false" onMouseClicked="#VisualizarChamado" prefHeight="50.0" prefWidth="150.0" text="Editar" />
+                        <Button fx:id="btnEditar" mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" text="Editar" />
                         <Button fx:id="btnRemover" mnemonicParsing="false" onMouseClicked="#ExcluirChamado" prefHeight="50.0" prefWidth="150.0" text="Remover" />
                      </children>
                   </HBox>

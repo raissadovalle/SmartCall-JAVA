@@ -81,22 +81,74 @@ public class U_ClienteController implements Initializable {
 
         stage.setTitle("Cadastro de Clientes");
         stage.setScene(new Scene(root));
-        stage.show();
+        stage.showAndWait();
+
+        InitTable();
 
     }
 
     @FXML
     private void VisualizarCliente(MouseEvent event) throws IOException {
 
-        Stage stage = new Stage();
-        Parent root = FXMLLoader.load(getClass().getResource("w_CadastroCliente.fxml"));
+        Cliente Dados = gridCliente.getFocusModel().getFocusedItem();
+        DAOCliente cliDB = new DAOCliente();
+        
+        if (Dados != null) {
 
-        stage.setTitle("Editar Cliente");
-        stage.setScene(new Scene(root));
-        stage.show();
+            Dados = cliDB.BuscarCliente(Dados.getCpfCnpj());
+            
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("w_CadastroCliente.fxml"));
+            Parent root = loader.load();
 
+            W_CadastroClienteController controllercadastro = loader.getController();
+            controllercadastro.cliente = Dados;
+            controllercadastro.AtribuirCliente();
+            controllercadastro.DesativarCampos();
+
+            Stage stage = new Stage();
+            stage.setTitle("SmartCall");
+            controllercadastro.labelCentral.setText("Visualizar Cliente");
+            stage.setScene(new Scene(root));
+
+            stage.showAndWait();
+
+        }
+
+        InitTable();
     }
 
+    @FXML
+    private void EditarCliente(MouseEvent event) throws IOException {
+
+        Cliente Dados = gridCliente.getFocusModel().getFocusedItem();
+        DAOCliente cliDB = new DAOCliente();
+        
+        if (Dados != null) {
+
+            Dados = cliDB.BuscarCliente(Dados.getCpfCnpj());
+            
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("w_CadastroCliente.fxml"));
+            Parent root = loader.load();
+
+            W_CadastroClienteController controllercadastro = loader.getController();
+            controllercadastro.cliente = Dados;
+            controllercadastro.AtribuirCliente();
+            
+
+            Stage stage = new Stage();
+            stage.setTitle("SmartCall");
+            controllercadastro.labelCentral.setText("Editar Cliente");
+            stage.setScene(new Scene(root));
+
+            stage.showAndWait();
+
+        }
+
+        InitTable();
+    }
+    
     @FXML
     public void DetalharCliente(MouseEvent event) throws IOException {
 
@@ -106,6 +158,8 @@ public class U_ClienteController implements Initializable {
         stage.setTitle("Cadastro de Clientes");
         stage.setScene(new Scene(root));
         stage.show();
+
+        InitTable();
     }
 
     public void ExcluirCliente() {
@@ -114,7 +168,7 @@ public class U_ClienteController implements Initializable {
 
             DAOCliente chDB = new DAOCliente();
             Cliente dados = gridCliente.getFocusModel().getFocusedItem();
-            
+
             if (chDB.ExcluirCliente(dados.getCpfCnpj())) {
 
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -138,7 +192,7 @@ public class U_ClienteController implements Initializable {
                 });
 
             }
-            
+
             InitTable();
         }
 

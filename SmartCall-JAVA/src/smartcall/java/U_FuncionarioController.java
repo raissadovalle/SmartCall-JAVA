@@ -20,6 +20,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -29,6 +30,7 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import smartcall.java.Classes.Funcionario;
+import smartcall.java.Classes.Setor;
 
 /**
  * FXML Controller class
@@ -45,8 +47,7 @@ public class U_FuncionarioController implements Initializable {
     private Button btnEditar;
     @FXML
     private Button btnAdicionar;
-    @FXML
-    private ListView<Funcionario> chamadoScene;
+
     @FXML
     private HBox panelBotoesFunc;
 
@@ -68,6 +69,8 @@ public class U_FuncionarioController implements Initializable {
     @FXML
     private TableColumn<Funcionario, String> email;
 
+    
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
@@ -84,32 +87,45 @@ public class U_FuncionarioController implements Initializable {
 
         stage.setTitle("Cadastro de Funcionarios");
         stage.setScene(new Scene(root));
-        stage.show();
+        stage.showAndWait();
+
+        InitTable();
 
     }
 
     @FXML
     private void VisualizarFuncionario(MouseEvent event) throws IOException {
 
-        Stage stage = new Stage();
-        Parent root = FXMLLoader.load(getClass().getResource("w_CadastroFuncionario.fxml"));
+        Funcionario Dados = gridFuncionario.getFocusModel().getFocusedItem();
+        DAOFuncionario funcDB = new DAOFuncionario();
 
-        stage.setTitle("Editar Funcionario");
-        stage.setScene(new Scene(root));
-        stage.show();
+        if (Dados != null) {
+
+            Dados = funcDB.BuscarFuncionario(Dados.getCpfCnpj());
+
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("w_CadastroFuncionario.fxml"));
+            Parent root = loader.load();
+
+            W_CadastroFuncionarioController controllercadastro = loader.getController();
+            controllercadastro.funcionario = Dados;
+            controllercadastro.AtribuirFuncionario();
+            controllercadastro.DesativarCampos();
+
+            Stage stage = new Stage();
+            stage.setTitle("SmartCall");
+            controllercadastro.labelCentral.setText("Visualizar Funcionario");
+            stage.setScene(new Scene(root));
+
+            stage.showAndWait();
+
+        }
+
+        InitTable();
 
     }
 
-    @FXML
-    public void DetalharFuncionario(MouseEvent event) throws IOException {
 
-        Stage stage = new Stage();
-        Parent root = FXMLLoader.load(getClass().getResource("w_CadastroFuncionario.fxml"));
-
-        stage.setTitle("Cadastro de Funcionarios");
-        stage.setScene(new Scene(root));
-        stage.show();
-    }
 
     @FXML
     public void ExcluirFuncionario() {
@@ -144,9 +160,9 @@ public class U_FuncionarioController implements Initializable {
             }
 
         }
-        
+
         InitTable();
-        
+
     }
 
     private void InitTable() {
@@ -164,6 +180,37 @@ public class U_FuncionarioController implements Initializable {
 
         DAOFuncionario funcionario = new DAOFuncionario();
         return FXCollections.observableArrayList(funcionario.getList());
+    }
+    
+    @FXML
+    public void EditarFuncionario(MouseEvent event) throws IOException {
+
+        Funcionario Dados = gridFuncionario.getFocusModel().getFocusedItem();
+        DAOFuncionario cliDB = new DAOFuncionario();
+        
+        if (Dados != null) {
+
+            Dados = cliDB.BuscarFuncionario(Dados.getCpfCnpj());
+            
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("w_CadastroFuncionario.fxml"));
+            Parent root = loader.load();
+
+            W_CadastroFuncionarioController controllercadastro = loader.getController();
+            controllercadastro.funcionario = Dados;
+            controllercadastro.AtribuirFuncionario();
+            
+
+            Stage stage = new Stage();
+            stage.setTitle("SmartCall");
+            controllercadastro.labelCentral.setText("Editar Funcionário");
+            stage.setScene(new Scene(root));
+
+            stage.showAndWait();
+
+        }
+
+        InitTable();
     }
 
 }
